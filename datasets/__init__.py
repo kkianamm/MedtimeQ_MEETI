@@ -7,6 +7,7 @@ from .bidmc import bidmc_datasets
 from .ludb import ludb_datasets
 from .dreams import dreams_datasets
 from .ptbxl import ptbxl_datasets
+from .meeti import meeti_datasets
 
 from .util import multi_2_uni_dataset
 from .util import PretrainingDataset
@@ -25,6 +26,7 @@ dataset_lookup = {
     "ludb": ludb_datasets,
     "dreams": dreams_datasets,
     "PTB-XL": ptbxl_datasets,
+    "MEETI": meeti_datasets,
 }
 
 def get_dataset(config, split):
