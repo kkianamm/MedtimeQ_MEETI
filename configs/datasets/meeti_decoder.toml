@@ -30,6 +30,19 @@ eval_metric_direction = "max"
 
 [datasets.MEETI]
 version = "v1"
+root = "data/MEETI"                    # where you unzipped MEETI.zip
+mimic_ecg_root = "data/mimic-iv-ecg"   # PhysioNet MIMIC-IV-ECG root (real waveforms)
+# "mimic"         -> real 12-lead waveform from MIMIC-IV-ECG (needs PhysioNet + wfdb)
+# "text_features" -> SMOKE TEST ONLY: fake series from interpretation text; verifies
+#                    the pipeline runs end-to-end before you have PhysioNet access.
+signal_source = "text_features"
+# --- where the data lives ---
+meeti_root = "data/meeti"          # where MEETI.zip was unzipped
+mimic_root = "data/mimic_ecg"      # where MIMIC-IV-ECG waveforms live (for "mimic")
+# --- where the ECG SIGNAL comes from ---
+# "synthetic": fake signals, ONLY to verify the pipeline runs (results are meaningless)
+# "mimic":     real 12-lead waveforms from a MIMIC-IV-ECG download (real results)
+signal_source = "synthetic"
 
 
 [models.medtsllm]
