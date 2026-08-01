@@ -37,7 +37,7 @@ mimic_ecg_root = "data/mimic-iv-ecg"
 # "mimic"         -> real 12-lead waveform from MIMIC-IV-ECG (needs PhysioNet + wfdb)
 # "text_features" -> SMOKE TEST ONLY: fake series from interpretation text; verifies
 #                    the pipeline runs end-to-end before you have PhysioNet access.
-signal_source = "text_features"
+signal_source = "mimic"
 
 
 [models.medtsllm]
