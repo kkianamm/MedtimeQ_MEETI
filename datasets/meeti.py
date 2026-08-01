@@ -44,7 +44,7 @@ CONFIG  ([datasets.MEETI] block):
 
 import re
 from pathlib import Path
-
+from tqdm.auto import tqdm
 import numpy as np
 
 from .ptbxl import (
@@ -201,9 +201,33 @@ class MEETIClassificationDataset(ClassificationDataset):
         signals, labels, descriptions = [], [], []
         n_seen = n_missing_wave = 0
 
-        for subj, study, mat_path, rel in self._list_records():
-            if self._split_of(subj) != split:
-                continue
+        print(
+            f"[MEETI] Scanning records under {self._meeti_root()}...",
+            flush=True,
+        )
+        
+        all_records = self._list_records()
+        
+        split_records = [
+            record
+            for record in all_records
+            if self._split_of(record[0]) == split
+        ]
+        
+        print(
+            f"[MEETI] Found {len(all_records):,} total records; "
+            f"loading {len(split_records):,} for split={split!r}.",
+            flush=True,
+        )
+        
+        progress = tqdm(
+            split_records,
+            desc=f"Loading MEETI {split}",
+            unit="record",
+            dynamic_ncols=True,
+        )
+        
+        for subj, study, mat_path, rel in progress:
             n_seen += 1
 
             try:
