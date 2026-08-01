@@ -33,7 +33,7 @@ version = "v1"
 # where you unzipped MEETI.zip (folder that contains p1000/, p1571/, ...)
 root = "data/MEETI"
 # PhysioNet MIMIC-IV-ECG root, used only when signal_source = "mimic"
-mimic_ecg_root = "data/mimic-iv-ecg"
+mimic_ecg_root = "data/MEETI"
 # "mimic"         -> real 12-lead waveform from MIMIC-IV-ECG (needs PhysioNet + wfdb)
 # "text_features" -> SMOKE TEST ONLY: fake series from interpretation text; verifies
 #                    the pipeline runs end-to-end before you have PhysioNet access.
